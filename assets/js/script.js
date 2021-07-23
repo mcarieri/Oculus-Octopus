@@ -106,10 +106,42 @@ let gameInfo=function(gameSlug){
             });
         })
         .catch(function (error) {
-            alert("Unable to connect to RAWG api");
+            alert("Unable to connect to openweathermap.org");
         });
    
 }
 
-
+let Socialgrep=function(game){
+    SGUrl=`https://socialgrep.p.rapidapi.com/search/posts?query=${game}`;
+    fetch(SGUrl, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "cfad5dea77mshfa65b5044f9903dp1a13d5jsn51d29068967e",
+		"x-rapidapi-host": "socialgrep.p.rapidapi.com"
+	}
+})
+.then(function (response) {
+    response.json().then(function (data) {
+        console.log(data);
+        let h4 = $('<h5>');
+         h4.text("Data from Socialgrep:");
+        $('#socialgrep').append(h4);
+        for (i=0; i<data.data.length;i++){
+            let p=$('<p>');p2=$('<p>');p3=$('<p>');
+            if (data.data[i].selftext){
+                p.text(data.data[i].domain+ " post");
+                p2.text(data.data[i].title);
+                p3.text(data.data[i].selftext);
+                $('#socialgrep').append(p);
+                $('#socialgrep').append(p2);
+                $('#socialgrep').append(p3);
+                $('#socialgrep').append($('</br>'));
+            }
+        }
+    });
+})
+.catch(function (error) {
+    alert("Unable to connect to openweathermap.org");
+});
+}
 $('#search').click(GetWeather);
