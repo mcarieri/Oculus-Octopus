@@ -106,7 +106,7 @@ let gameInfo=function(gameSlug){
             });
         })
         .catch(function (error) {
-            alert("Unable to connect to openweathermap.org");
+            alert("Unable to connect to RAWG api");
         });
    
 }
