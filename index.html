@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>games</title>
+</head>
+
+<body>
+    <!-- header -->
+    <header class="container-fluid text-center text-red jumbotron p-2">
+        <h2 class="font-weight-bold">games</h2>
+    </header>
+        <!-- search and history row  -->
+        <div class="row m-0">
+            <div id= "first-row" class="col-lg-3 bg-white ">
+                <h4 class="mt-2">Search for a game:</h4>
+                <input id="game" type="text" class="form-control" placeholder="Enter a game">
+                <div class="d-grid gap-2">
+                <button class="btn btn-primary mt-2 mb-2 btn-block" id="search">Search</button>
+                </div>
+                
+            </div>
+                  <!-- City Weather and 5-day forecast row -->
+        <div  class="col-lg-9 mr-0">
+           
+            <div id="forecast"></div>
+            <div id="one-game" class="card-body"></div>
+            <div id="socialgrep" class=""></div>
+        
+    </div>
+    <!-- scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> 
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
