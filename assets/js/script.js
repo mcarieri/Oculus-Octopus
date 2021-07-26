@@ -1,12 +1,19 @@
 rawgKey="ad7de449944a49eb8e4ece2f99e17776";
 let game='';
 let textInfo="";
+$('#one-game').hide();
+window.onload = function() {
+    // short timeout
+    setTimeout(function() {
+        window.scrollTo(0,0);
+    }, 15);
+};
 function GetWeather() {
     game = $('#game').val();
-    $('#socialgrep').empty();
+  //  $('#socialgrep').empty();
+  $('#one-game').hide();
     $('#forecast').empty();
-    $('#forecast').show();
-    $('#one-game').empty();
+  //  $('#one-game').empty();
     $('#city').val("");
     displayGames(game);
 
@@ -22,21 +29,27 @@ let displayGames = function (game) {
                     // show current weather
                     console.log(data);
                     let mainDiv = $('<div>');
-                    mainDiv.addClass("card-columns");
+                    mainDiv.addClass("grid game-wrap gap-4 mx-auto w-10/12  sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-flow-row");
                 for (i = 0; i < data.results.length; i++) {
                     
 
                     let div = $('<div>');
-                     div.addClass("card bg-forecast text-light m-2 p-2");
-                     let h5 = $('<h5>');
-                     h5.text(data.results[i].name);
+                     div.addClass("mb-10 m-2 game  bg-gray-100 ");
+
                      let icon = $('<img>');
-                     icon.addClass("mx-auto");
+                     icon.addClass("w-full");
                      icon.attr("src", data.results[i].background_image);
-                     icon.attr("width", 200);
+                     div.append(icon);
+                    let divName=$('<div>');
+                    divName.addClass("desc p-4 text-gray-800");
+                      let h5 = $('<h5>');
+                     h5.text(data.results[i].name);
+                     divName.append(h5);
+                     div.append(divName);
+
                      div.attr('data-game-slug', data.results[i].slug);
                      div.append(h5);
-                     div.append(icon);
+                    
                      div.on( 'click', function(event){
                         event.preventDefault();
                         gameInfo($(this).attr('data-game-slug'));
@@ -47,6 +60,10 @@ let displayGames = function (game) {
                  }
                 
                  $('#forecast').append(mainDiv);
+                //  $('#forecast').scrollIntoView();
+                // getElementById("forecast").scrollIntoView();
+                 let scrollDiv = document.getElementById("forecast").offsetTop;
+window.scrollTo({ top: scrollDiv, behavior: 'smooth'});
 
                 });
             } else {
@@ -63,22 +80,10 @@ let displayGames = function (game) {
 }
 let gameInfo=function(gameSlug){
    console.log(game);
-   $('#forecast').hide();
    $('#one-game').show();
-   $('#one-game').empty();
-   $('#socialgrep').empty();
-   btnBack = $('<button>');
-    btnBack .addClass('btn btn-primary mt-2 mb-2 btn-block');
-    btnBack.text("Go back");
-    
-    btnBack .on('click', function (event) {
-        event.preventDefault();
-        $('#forecast').show();
-        $('#one-game').hide();
-        $('#socialgrep').hide();
+   //$('#one-game').empty();
+   //$('#socialgrep').empty();
 
-    })
-    $('#one-game').append(btnBack);
 
     apiURLlDetailed=`https://api.rawg.io/api/games/${gameSlug}?&key=${rawgKey}`;
     fetch(apiURLlDetailed)
@@ -87,21 +92,36 @@ let gameInfo=function(gameSlug){
                 console.log(data);
 
               
-                let mainDiv = $('<div>');
-                mainDiv.addClass("");
-                    let h4 = $('<h5>');
-                    h4.text(data.name);
-                    mainDiv.append(h4);
-                    let icon = $('<img>');
-                    icon.addClass("mx-auto");
-                    icon.attr("src", data.background_image);
-                    icon.attr("width", 800);
-                    mainDiv.append(icon);
-                    let div=$('<div>');
-                    div.html(data.description);
-                    mainDiv.append(div);
-                    $('#one-game').append(mainDiv);
-                    Socialgrep(data.name);
+                // let mainDiv = $('<div>'), descDiv = $('<div>');
+                // mainDiv.addClass("text-white");
+                // let h2 = $('<h2>');
+                $('#game-name').text(data.name);
+                $('#game-img').attr("src", data.background_image);
+                $('#description').html(data.description);
+                
+
+                // mainDiv.append(h2);
+                // let jumboDiv=$('<div>');
+                //     jumboDiv.addClass("flex flex-col lg:flex-row  space-x-4  mx-auto  flex-auto");
+                    
+                //     let icon = $('<img>');
+                //     icon.addClass("object-contain w-3/5");
+                //     icon.attr("src", data.background_image);
+                    
+                //     jumboDiv.append(icon);
+
+                   
+                   
+                //     let div=$('<div>');
+                //     div.html(data.description);
+                //     descDiv.append(div);
+                //     jumboDiv.append(descDiv);
+                //     mainDiv.append(jumboDiv);
+                //     $('#one-game').append(mainDiv);
+                   // Socialgrep(data.name); 
+                   $('one-game').show();
+                    let scrollDiv = document.getElementById("one-game").offsetTop;
+                    window.scrollTo({ top: scrollDiv, behavior: 'smooth'});
                 
             });
         })
