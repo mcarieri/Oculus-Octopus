@@ -111,20 +111,25 @@ let gameInfo=function(gameSlug){
    
 }
 
+
+//Review: https://www.giantbomb.com/api/review/[guid]/?api_key=d98fe8a413e6c337edd8959849e3c726b0bcbaf0
+//http://www.giantbomb.com/api/game/3030-4725/?api_key=[YOUR-KEY]&format=json&field_list=genres,name
+//Query Structure: http://www.giantbomb.com/api/[RESOURCE-TYPE]/[RESOURCE-ID]/?api_key=[YOUR-KEY]&format=[RESPONSE-DATA-FORMAT]&field_list=[COMMA-SEPARATED-LIST-OF-RESOURCE-FIELDS]
+//Example: http://www.giantbomb.com/api/search/?api_key=[YOUR-KEY]&format=json&query="metroid prime"&resources=game
 let Socialgrep=function(game){
-    SGUrl=`https://socialgrep.p.rapidapi.com/search/posts?query=${game}`;
+    SGUrl=`http://www.giantbomb.com/api/search/?api_key=d98fe8a413e6c337edd8959849e3c726b0bcbaf0&format=json&query="{game}&resources=game`;
     fetch(SGUrl, {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-key": "cfad5dea77mshfa65b5044f9903dp1a13d5jsn51d29068967e",
-		"x-rapidapi-host": "socialgrep.p.rapidapi.com"
+		"x-rapidapi-key": "d98fe8a413e6c337edd8959849e3c726b0bcbaf0",
+		"x-rapidapi-host": "http://www.giantbomb.com"
 	}
 })
 .then(function (response) {
     response.json().then(function (data) {
         console.log(data);
         let h4 = $('<h5>');
-         h4.text("Data from Socialgrep:");
+         h4.text("Data from GiantBomb:");
         $('#socialgrep').append(h4);
         for (i=0; i<data.data.length;i++){
             let p=$('<p>');p2=$('<p>');p3=$('<p>');
@@ -141,7 +146,7 @@ let Socialgrep=function(game){
     });
 })
 .catch(function (error) {
-    alert("Unable to connect to openweathermap.org");
+    alert("Unable to connect to GiantBomb");
 });
 }
 $('#search').click(GetWeather);
