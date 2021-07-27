@@ -1,0 +1,17 @@
+
+.game{
+    box-shadow: 0 10px 15px -3px #6b7280, 0 4px 6px -2px #6b7280;
+    border: #dfe0e2 solid 1px;
+}
+.game-wrap:hover .game{
+    
+    opacity:.8;
+    transform: scale(1);
+    box-shadow:none;
+}
+.game-wrap:hover .game:hover{
+    transform:scale(1.08);
+    filter:blur(0px);
+    opacity:1;
+     box-shadow: 0 10px 15px -3px #6b7280, 0 4px 6px -2px #6b7280;
+  }
