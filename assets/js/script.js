@@ -150,3 +150,10 @@ let Socialgrep=function(game){
 });
 }
 $('#search').click(GetWeather);
+
+//divName for cards on js
+//one-game
+//line 92 div ID system-requirements
+//line 111 ID available-platforms
+//line 132 ID publishers
+//line 150 ID 

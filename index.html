@@ -6,40 +6,190 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- stylesheets -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>games</title>
 </head>
 
-<body>
-    <!-- header -->
-    <header class="container-fluid text-center text-red jumbotron p-2">
-        <h2 class="font-weight-bold">games</h2>
-    </header>
-        <!-- search and history row  -->
-        <div class="row m-0">
-            <div id= "first-row" class="col-lg-3 bg-white ">
-                <h4 class="mt-2">Search for a game:</h4>
-                <input id="game" type="text" class="form-control" placeholder="Enter a game">
-                <div class="d-grid gap-2">
-                <button class="btn btn-primary mt-2 mb-2 btn-block" id="search">Search</button>
+<body class="">
+
+    <div id="top" class="h-screen flex justify-center items-center bg-cover bg-center "
+        style="background-image: linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)), url('assets/img/bg.jpeg')">
+        <div class="absolute top-0 left-0 mt-8 ml-8">
+            <div class="mb-2 sm:mb-0 flex flex-row items-center
+            ">
+                <div class=" self-center mr-2">
+                    <img class="w-20 self-center" src="assets/img/pngegg.png" />
                 </div>
-                
+                <div class=" ml-0">
+                    <span class="text-4xl no-underline text-gray-300 font-mono font-extrabold">Oculus<span
+                            class="text-red-700">Octopus</span>
+
+                </div>
             </div>
-                  <!-- City Weather and 5-day forecast row -->
-        <div  class="col-lg-9 mr-0">
-           
-            <div id="forecast"></div>
-            <div id="one-game" class="card-body"></div>
-            <div id="socialgrep" class=""></div>
-        
+            <!-- <img src="pngegg.png" class="w-28">  -->
+        </div>
+
+        <div class="space-y-5">
+            <p class="text-white font-bold text-5xl flex flex-col items-center ">
+                Game Discovery Service
+
+            </p>
+            <p class="text-white font-semibold text-3xl flex flex-col items-center"><span>We use
+                    RAWG<br></span><span>500,000+ games for 50 platforms</span></p>
+            <p class="text-white text-lg flex flex-col items-center">Ready to discover? Enter a game.</p>
+            <div class="flex flex-row items-center justify-center">
+                <input type="text" id="game" placeholder="Enter a game"
+                    class="p-4 focus:outline-none focus:ring-1 focus:ring-blue-300 w-3/4" />
+                <button id='search'
+                    class=" p-4 text-l font-semibold bg-red-600 hover:bg-red-700 text-white">Search</button>
+            </div>
+        </div>
     </div>
-    <!-- scripts -->
+
+    <div class="flex items-center justify-center bg-black p-5">
+        <div id="forecast" class="">
+        </div>
+    </div>
+
+    <!-- <div class="h-screen flex items-center justify-center bg-black p-5"> -->
+    <!-- <div id="one-game" class=""></div>
+    </div>
+    <hr />
+    <div class="h-screen flex items-center justify-center bg-black p-5">
+        <div id="socialgrep" class=""></div>
+    </div> -->
+    <!-- one game -->
+
+    <div id="one-game" class="py-12 bg-black">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="overflow-hidden  shadow-xl bg-gray-800 sm:rounded-lg">
+                <div>
+                    <div class="p-6  border-b  bg-gray-800 border-gray-700 sm:px-20">
+                        <div id="game-name" class="mt-8 text-2xl text-gray-200"> Welcome to your Jetstream
+                            application! </div>
+                        <div class="flex flex-col lg:flex-row  space-x-4  mx-auto  flex-auto">
+                            <img id="game-img" alt="after!!" class="object-contain w-1/2 align-top ">
+                            <div id="description" class="text-gray-200"></div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 bg-opacity-25 bg-gray-800 md:grid-cols-2">
+                        <div class="p-6">
+                            <div class="flex items-center"><svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                    class="w-8 h-8 text-gray-200">
+                                    <path
+                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                    </path>
+
+                                </svg>
+                                <div class="ml-4 text-lg font-semibold leading-7 text-gray-200">
+                                    Info
+                                </div>
+                            </div>
+                            <div class="ml-12">
+                                <div class="mt-2 text-sm text-gray-400"> Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Architecto eius nulla deleniti non minus fugit velit iusto,
+                                    blanditiis dolor placeat harum debitis totam eligendi id impedit iste quo? A,
+                                    placeat!
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="p-6 border-t border-gray-700 md:border-t-0 md:border-l">
+                            <div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg"
+                                    class="w-8 h-8 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                                </svg>
+                                <div class="ml-4 text-lg font-semibold leading-7 text-gray-200">
+                                    <a href="https://laracasts.com">Platform</a>
+                                </div>
+                            </div>
+                            <div class="ml-12">
+                                <div class="mt-2 text-sm text-gray-400"> Lorem ipsum, dolor sit amet consectetur
+                                    adipisicing elit. Aut animi quas omnis quidem consectetur recusandae ab voluptatibus
+                                    eos nisi possimus perspiciatis harum nulla tempore aliquam incidunt, quis
+                                    repudiandae, corporis voluptatem!
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 border-t border-gray-700">
+                            <div class="flex items-center"><svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                    class="w-8 h-8 text-gray-200">
+                                    <path
+                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                <div class="ml-4 text-lg font-semibold leading-7 text-gray-200">
+                                    info
+                                </div>
+                            </div>
+                            <div class="ml-12">
+                                <div class="mt-2 text-sm text-gray-400"> Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Voluptatum beatae cum tempore amet deleniti commodi, velit,
+                                    voluptates facere nemo similique nobis dolor rerum doloremque eos. Deserunt
+                                    temporibus itaque autem quaerat. </div>
+                            </div>
+                        </div>
+                        <div class="p-6 border-t border-gray-700 md:border-l">
+                            <div class="flex items-center"><svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                    class="w-8 h-8 text-gray-200">
+                                    <path
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                                <div class="ml-4 text-lg font-semibold leading-7 text-gray-200">
+                                    info</div>
+                            </div>
+                            <div class="ml-12">
+                                <div class="mt-2 text-sm text-gray-400">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae voluptate qui,
+                                    nihil cumque inventore veritatis tempore dignissimos ad quas blanditiis distinctio.
+                                    Porro laudantium magni id laborum in odio ullam amet?/div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- </div> -->
+
+        <!-- one game end -->
+
+        <hr />
+        <div class="min-h-screen bg-black space-y-10">
+            <p class="p-5 text-white font-bold text-5xl flex text-gray-200 justify-center">Frequently Asked Questions
+            </p>
+            <div class="space-y-5 flex flex-col justify-center items-center ">
+                <div class="p-5 bg-gray-800 text-gray-200 w-3/4">
+                    <p class="text-3xl text-white">What is OculusOctopus ?</p>
+                </div>
+                <div class="p-5 bg-gray-800 text-gray-200 w-3/4">
+                    <p class="text-3xl text-white">Question 2 ?</p>
+                </div>
+                <div class="p-5 bg-gray-800  text-gray-200 w-3/4">
+                    <p class="text-3xl text-white">Question 3 ?</p>
+                </div>
+                <div class="p-5 bg-gray-800 text-gray-200 w-3/4">
+                    <p class="text-3xl text-white">Question 4 ?</p>
+                </div>
+            </div>
+        </div>
+        <hr />
+    </div>
+    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+
+
+    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 
