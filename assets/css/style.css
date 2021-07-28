@@ -1,16 +1,17 @@
 .game{
-    box-shadow: 0 10px 15px -3px #6b7280, 0 4px 6px -2px #6b7280;
-    border: #dfe0e2 solid 1px;
+    box-shadow: 0 10px 15px -3px #6B7280, 0 4px 6px -2px #6B7280;
+    border: #DFE0E2 solid 1px;
 }
 .game-wrap:hover .game{
-    
+    cursor: pointer;
     opacity:.8;
     transform: scale(1);
     box-shadow:none;
 }
 .game-wrap:hover .game:hover{
+    cursor: pointer;
     transform:scale(1.08);
     filter:blur(0px);
     opacity:1;
-     box-shadow: 0 10px 15px -3px #6b7280, 0 4px 6px -2px #6b7280;
-  }
+     box-shadow: 0 10px 15px -3px #6B7280, 0 4px 6px -2px #6B7280;
+  } 
