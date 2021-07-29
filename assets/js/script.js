@@ -59,6 +59,9 @@ let displayGames = function (game) {
  
                  }
                 
+                 //let 
+
+
                  $('#forecast').append(mainDiv);
                 //  $('#forecast').scrollIntoView();
                 // getElementById("forecast").scrollIntoView();
