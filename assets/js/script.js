@@ -101,6 +101,10 @@ let gameInfo=function(gameSlug){
                  $('#game-name').text(data.name);
                  $('#game-img').attr("src", data.background_image);
                  $('#description').html(data.description);
+                 $('#game-genre').html(data.genre);
+                 $('#game-platform').html(data.platform);
+                 $('#game-publisher').html(data.publisher);
+                 $('#game-developer').html(data.developer);
                     $('one-game').show();
                      let scrollDiv = document.getElementById("one-game").offsetTop;
                      window.scrollTo({ top: scrollDiv, behavior: 'smooth'});
@@ -170,6 +174,9 @@ function GBsearch(){
                      p2.html(data.results[0].description);
                      p2.addClass("mt-2 text-sm text-gray-400");
                      divCont.append(p2);
+                     p3.html(data.results[0].genre);
+                     p3.addClass("mt-2 text-sm text-gray-400");
+                     divCont.append(p3);
                     divInfo.append(divCont);
                     chDiv.append(divInfo);
                     $('#game-content').append(chDiv);
