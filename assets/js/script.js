@@ -17,7 +17,7 @@ function SearchButtonClick() {
     displayGames(game);
 
 }
-//  Get games list from rawg and display game cards
+//  Get games list from rawg api; display game cards
 let displayGames = function (game) {
     let apiUrl = `https://api.rawg.io/api/games?&search=${game}&key=${rawgKey}`;
     fetch(apiUrl)
