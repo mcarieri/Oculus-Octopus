@@ -3,42 +3,53 @@ rawgKey = "ad7de449944a49eb8e4ece2f99e17776";
 gbKey = "82377eacd0eaabd596437efbea6cb8449b5bd190";
 let game = '';
 $('#one-game').hide();
+//scroll up
 window.onload = function () {
     setTimeout(function () {
         window.scrollTo(0, 0);
     }, 15);
 };
+// call displyGames and add new item to localstorage game hisory list
 function SearchButtonClick() {
     game = $('#game').val();
     $('#game').val("");
     $('#one-game').hide();
-    $('#forecast').empty();
-    $('#city').val("");
+    $('#gameCards').empty();
     displayGames(game);
-
+    let hisoryList=JSON.parse(localStorage.getItem('history-list')) || [];
+    hisoryList.push(game);
+    localStorage.setItem('history-list', JSON.stringify(hisoryList));
 }
-//  Get games list from rawg api; display game cards
+
+//  Get game list from rawg api; display game cards
 let displayGames = function (game) {
+    $('#gameCards').empty();
     let apiUrl = `https://api.rawg.io/api/games?&search=${game}&key=${rawgKey}`;
     fetch(apiUrl)
         .then(function (response) {
             // request was successful
             if (response.ok) {
-                response.json().then(function (data) {
-                    // show current weather
+                response.json().then(function (data) {        
                     console.log(data);
+                     // show game cards
                     let mainDiv = $('<div>');
                     mainDiv.addClass("grid game-wrap gap-4 mx-auto w-10/12  sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-flow-row");
                     for (i = 0; i < data.results.length; i++) {
                         let div = $('<div>');
-                        div.addClass("mb-10 m-2 game  bg-gray-100 ");
-
+                        div.addClass("mb-5 m-2 game  bg-gray-100 ");
                         let icon = $('<img>');
                         icon.addClass("w-full");
                         icon.attr("src", data.results[i].background_image);
                         div.append(icon);
+                        let grayInfo=$('<div>');
+                        grayInfo.addClass("info-box text-xs flex p-1 font-semibold text-gray-500 bg-gray-300");
+                        let span1=$('<span>');
+                        span1.addClass("mr-1 p-1 px-2 font-bold");
+                        span1.text("released: "+data.results[i].released);
+                        grayInfo.append(span1);
+                        div.append(grayInfo);
                         let divName = $('<div>');
-                        divName.addClass("desc p-4 text-gray-800");
+                        divName.addClass( "p-1 m-1 text-gray-800");
                         let h5 = $('<h5>');
                         h5.text(data.results[i].name);
                         divName.append(h5);
@@ -56,24 +67,25 @@ let displayGames = function (game) {
 
                     }
 
-                    $('#forecast').append(mainDiv);
+                    $('#gameCards').append(mainDiv);
                     //scroll down
-                    let scrollDiv = document.getElementById("forecast").offsetTop;
+                    let scrollDiv = document.getElementById("gameCards").offsetTop;
                     window.scrollTo({ top: scrollDiv, behavior: 'smooth' });
 
                 });
             } else {
-                $('#forecast').empty();
-                $('#forecast').text("game not found");
+                $('#gameCards').empty();
+                $('#gameCards').text("game not found");
             }
         })
         .catch(function (error) {
-            $('#forecast').empty();
-            $('#forecast').text("Unable to connect to api.rawg.io");
+            $('#gameCards').empty();
+            $('#gameCards').text("Unable to connect to api.rawg.io");
         });
 
 
 }
+
 // Detailed chosen game info
 let gameInfo = function (gameSlug) {
     console.log(game);
@@ -95,12 +107,12 @@ let gameInfo = function (gameSlug) {
 
             });
         })
-        //redo it! alert
         .catch(function (error) {
-            alert("Unable to connect to openweathermap.org");
+             $('#game-name').text("Unable to connect to api.rawg.io");
         });
 
 }
+
 // get and show characters / giant bomb api
 function GBsearch() {
     // search by game name
@@ -110,8 +122,8 @@ function GBsearch() {
             // request was successful
             if (response.ok) {
                 response.json().then(function (data) {
-                    // detailed fetch for the first game from response
                     console.log(data);
+                    // detailed fetch for the first game from the response
                     if (data.results.length > 0) {
                         fetch(`https://cors-anywhere.herokuapp.com/https://www.giantbomb.com/api/game/${data.results[0].guid}/?api_key=${gbKey}&format=json`)
                             .then(function (response) {
@@ -119,11 +131,12 @@ function GBsearch() {
                             })
                             .then(function (data) {
                                 console.log(data);
+                                // if there is a list of characters ...
                                 if (data.results.characters) {
                                     for (i = 0; i < data.results.characters.length; i++) {
                                         let characterId = data.results.characters[i].id;
                                         console.log("id " + characterId);
-                                        // if there is a list of characters new fetch for each item
+                                        // ... new fetch for each item
                                         fetch(`https://cors-anywhere.herokuapp.com/https://www.giantbomb.com/api/characters/?filter=id:${characterId}&api_key=${gbKey}&format=json`)
                                             .then(function (response) {
                                                 return response.json();
@@ -131,9 +144,9 @@ function GBsearch() {
                                             .then(function (data) {
                                                 console.log(data);
                                                 console.log("---");
+                                                // display character
                                                 let divName = $('<div>'), divInfo = $('<div>'), chDiv = $('<div>'), divCont = $('<div>');
                                                 chDiv.addClass('p-6  border-b  bg-gray-800 border-gray-700 sm:px-20');
-
                                                 divName.text(data.results[0].name);
                                                 divName.addClass("mt-8 text-2xl text-gray-200");
                                                 chDiv.append(divName);
@@ -153,10 +166,11 @@ function GBsearch() {
                                                 chDiv.append(divInfo);
                                                 $('#game-content').append(chDiv);
 
-
-
                                             });
                                     }
+                                     //scroll 
+                                    let scrollDiv = document.getElementById("characters").offsetTop;
+                                    window.scrollTo({ top: scrollDiv, behavior: 'smooth' });
                                 }
                                 else { NothingFound(); }
                             }
@@ -169,10 +183,10 @@ function GBsearch() {
             } else { NothingFound(); }
         })
         .catch(function (error) {
-
-            alert("Unable to connect to openweathermap.org");
+            $('#game-content').text("Unable to connect to giantbomb.com/api/");
         });
 }
+
 // no characters data found
 let NothingFound = function () {
     let msg = $('<p>');
@@ -180,7 +194,47 @@ let NothingFound = function () {
     msg.addClass("m-8 text-center text-l text-gray-200");
     $('#game-content').append(msg);
 }
+
+// get data from local storage, add search history items
+function FillSearchHistory(){
+    $("#history-selector").empty();
+    $("#history-selector").addClass("absolute right-0 w-56 mt-4 origin-top-right  divide-y divide-gray-700 bg-red-600  text-white  shadow-lg outline-none");
+    let hisoryList=JSON.parse(localStorage.getItem('history-list')) || [];
+    // in case it is empty
+    if (hisoryList.length===0){
+        let divMain = $('<div>');
+       divMain.addClass("py-1");
+        let msg = $('<p>');
+        msg.addClass("hover:bg-red-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left");
+        msg.text("history is empty");
+        divMain.append(msg);
+        $("#history-selector").append(divMain);
+
+    }
+    // else fill selector
+    else{
+    for (i=0;i<hisoryList.length;i++){
+       let divMain = $('<div>');
+       divMain.addClass("py-1");
+        let msg = $('<p>');
+        msg.addClass("hover:bg-red-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left");
+        msg.text(hisoryList[i]);
+        msg.on('click', function (event) {
+            event.preventDefault();
+            game=$(this).text();
+            displayGames(game);
+        })
+        divMain.append(msg);
+        $("#history-selector").append(divMain);
+    }
+}
+
+}
+
+
 // characters button
 $('#characters').click(GBsearch);
-//search button
+//main search button
 $('#search').click(SearchButtonClick);
+// search hisory button
+$('#historyButton').click(FillSearchHistory);
