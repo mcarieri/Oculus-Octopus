@@ -9,30 +9,57 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="icon" type="image/png" href="assets/img/pngegg.png" />
     <title>games</title>
 </head>
 
-<body class="">
-
+<body>
+    <!-- first screen beginning  -->
     <div id="top" class="h-screen flex justify-center items-center bg-cover bg-center "
         style="background-image: linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)), url('assets/img/bg.jpeg')">
-        <div class="absolute top-0 left-0 mt-8 ml-8">
-            <div class="mb-2 sm:mb-0 flex flex-row items-center
-            ">
+        <!-- logo -->
+        <div class="absolute top-0 left-0 mt-5 ml-5">
+            <div class="mb-2 sm:mb-0 flex flex-row items-center">
                 <div class=" self-center mr-2">
-                    <img class="w-20 self-center" src="assets/img/pngegg.png" />
+                    <img class="w-16 self-center" src="assets/img/pngegg.png" />
                 </div>
                 <div class=" ml-0">
-                    <span class="text-4xl no-underline text-gray-300 font-mono font-extrabold">Oculus<span
+                    <span class="text-3xl no-underline text-gray-300 font-mono font-extrabold">Oculus<span
                             class="text-red-700">Octopus</span>
 
                 </div>
             </div>
-            <!-- <img src="pngegg.png" class="w-28">  -->
         </div>
-
+        <!-- logo end-->
+        <!-- search history -->
+        <div
+            class="absolute bg-red-600 hover:bg-red-700 text-white top-0 right-0  mt-8 mr-5 flex items-center justify-center">
+            <div class=" relative inline-block text-left dropdown">
+                <span><button id="historyButton"
+                        class="inline-flex justify-center w-full p-3  transition duration-150 ease-in-out focus:outline-none  ">
+                        <span>Search history</span>
+                        <svg class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button></span>
+                <div
+                    class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
+                    <div id="history-selector"
+                        class="absolute right-0 w-56 mt-4 origin-top-right  divide-y divide-gray-700 bg-red-600  text-white  shadow-lg outline-none">
+                        <!-- <div class="py-1">
+                            <p class="hover:bg-red-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"
+                                role="menuitem"></p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- search hisory end -->
+        <!-- first screen content -->
         <div class="space-y-5">
-            <p class="text-white font-bold text-5xl flex flex-col items-center ">
+            <p class="text-white font-bold text-4xl flex flex-col items-center ">
                 Game Discovery Service
 
             </p>
@@ -46,26 +73,20 @@
                     class=" p-4 text-l font-semibold bg-red-600 hover:bg-red-700 text-white">Search</button>
             </div>
         </div>
+        <!-- first screen content end-->
     </div>
-
+    <!-- first screen end  -->
+    <!-- game cards screen -->
     <div class="flex items-center justify-center bg-black p-5">
-        <div id="forecast" class="">
+        <div id="gameCards" class="">
         </div>
     </div>
-
-    <!-- <div class="h-screen flex items-center justify-center bg-black p-5"> -->
-    <!-- <div id="one-game" class=""></div>
-    </div>
-    <hr />
-    <div class="h-screen flex items-center justify-center bg-black p-5">
-        <div id="socialgrep" class=""></div>
-    </div> -->
-    <!-- one game -->
-
+    <!-- game cards screen end-->
+    <!-- one game screen -->
     <div id="one-game" class="py-12 bg-black">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden  shadow-xl bg-gray-800 sm:rounded-lg">
-                <div >
+                <div>
                     <div class="p-6  border-b  bg-gray-800 border-gray-700 sm:px-20">
                         <div id="game-name" class="mt-8 text-2xl text-gray-200"> </div>
                         <div class="flex flex-col lg:flex-row  space-x-4  mx-auto  flex-auto">
@@ -102,7 +123,7 @@
                                 </div>
                             </div>
                             <div class="ml-12">
-                                <div id="#game-platform" class="mt-2 text-sm text-gray-400"></div>
+                                <div id="#game-platform" class="mt-2 text-sm text-gray-400">fwerwgf t53t 5t5t</div>
                             </div>
                         </div>
                         <div class="p-6 border-t border-gray-700">
@@ -118,7 +139,8 @@
                                 </div>
                             </div>
                             <div class="ml-12">
-                                <div id="#game-publisher" class="mt-2 text-sm text-gray-400"></div></div>
+                                <div id="#game-publisher" class="mt-2 text-sm text-gray-400"></div>
+                            </div>
                         </div>
                         <div class="p-6 border-t border-gray-700 md:border-l">
                             <div class="flex items-center"><svg fill="none" stroke="currentColor" stroke-linecap="round"
@@ -136,22 +158,20 @@
                             </div>
                         </div>
                     </div>
+                    <!-- characters button and div for info-->
                     <div><button id='characters'
-                        class=" p-4 text-l w-full font-semibold bg-red-600 hover:bg-red-700 text-white">Characters</button>
-                </div>
-                 <div id="game-content"></div> 
+                            class=" p-4 text-l w-full font-semibold bg-red-600 hover:bg-red-700 text-white">Characters</button>
+                    </div>
 
+                    <div id="game-content"></div>
+                    <!-- characters button and div for info / end-->
                 </div>
-           
-
             </div>
         </div>
-
     </div>
-
-
-    <!-- one game end -->
+    <!-- one game screen end -->
     <hr />
+    <!-- faq -->
     <div class="min-h-screen bg-black space-y-10">
         <p class="p-5 text-white font-bold text-5xl flex text-gray-200 justify-center">Frequently Asked Questions
         </p>
@@ -170,8 +190,7 @@
             </div>
         </div>
     </div>
-    <hr />
-    </div>
+     <!-- scripts -->
     <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
 
 

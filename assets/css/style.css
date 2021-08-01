@@ -1,3 +1,4 @@
+/* game cards styles */
 .game{
     box-shadow: 0 10px 15px -3px #6B7280, 0 4px 6px -2px #6B7280;
     border: #DFE0E2 solid 1px;
@@ -14,4 +15,10 @@
     filter:blur(0px);
     opacity:1;
      box-shadow: 0 10px 15px -3px #6B7280, 0 4px 6px -2px #6B7280;
+  }
+  /* search history styles */
+  .dropdown:focus-within .dropdown-menu {
+    opacity:1;
+    transform: translate(0) scale(1);
+    visibility: visible;
   }
