@@ -1,93 +1,93 @@
 /* game cards styles */
 .game{
-    box-shadow: 0 10px 15px -3px #6B7280, 0 4px 6px -2px #6B7280;
-    border: #DFE0E2 solid 1px;
+  box-shadow: 0 10px 15px -3px #6B7280, 0 4px 6px -2px #6B7280;
+  border: #DFE0E2 solid 1px;
 }
 .game-wrap:hover .game{
-    cursor: pointer;
-    opacity:.8;
-    transform: scale(1);
-    box-shadow:none;
+  cursor: pointer;
+  opacity:.8;
+  transform: scale(1);
+  box-shadow:none;
 }
 .game-wrap:hover .game:hover{
-    cursor: pointer;
-    transform:scale(1.08);
-    filter:blur(0px);
-    opacity:1;
-     box-shadow: 0 10px 15px -3px #6B7280, 0 4px 6px -2px #6B7280;
-  }
-  /* search history styles */
-  .dropdown:focus-within .dropdown-menu {
-    opacity:1;
-    transform: translate(0) scale(1);
-    visibility: visible;
-  }
+  cursor: pointer;
+  transform:scale(1.08);
+  filter:blur(0px);
+  opacity:1;
+   box-shadow: 0 10px 15px -3px #6B7280, 0 4px 6px -2px #6B7280;
+}
+/* search history styles */
+.dropdown:focus-within .dropdown-menu {
+  opacity:1;
+  transform: translate(0) scale(1);
+  visibility: visible;
+}
 
-  /*----------------- FAQ ------------------*/
+/*----------------- FAQ ------------------*/
 
 .tab input {
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
-  }
-  
-  /* Accordion styles */
-  .tabs {
-    overflow: hidden;
-    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
-  }
-  
-  .tab {
-    width: 100%;
-    color: white;
-    overflow: hidden;
-    margin-bottom:20px;
-  }
-  .tab-label {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.25rem;
-    cursor: pointer;
-    /* Icon */
-  }
-  .tab-label:hover {
-    background: #1a252f;
-  }
-  .tab-label::after {
-    content: "❯";
-    width: 1em;
-    height: 1em;
-    text-align: center;
-    transition: all 0.35s;
-  }
-  .tab-content {
-    max-height: 0;
-    padding: 0 1.5em;
-    color: #2c3e50;
-    background: white;
-    transition: all 0.35s;
-  }
-  .tab-close {
-      
-    display: flex;
-    justify-content: flex-end;
-    padding: 1em;
-    background: #2c3e50;
-    cursor: pointer;
-  }
-  .tab-close:hover {
-    background: #1a252f;
-  }
-  
-  input:checked + .tab-label {
-    display: flex;
-    background: #1a252f;
-  }
-  input:checked + .tab-label::after {
-    transform: rotate(90deg);
-  }
-  input:checked ~ .tab-content {
-   /* max-height: 100vh;*/
-   
-    padding: 1.5em 1.5em 3em 1.5em;
-  }
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+/* Accordion styles */
+.tabs {
+  overflow: hidden;
+  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+}
+
+.tab {
+  width: 100%;
+  color: white;
+  overflow: hidden;
+  margin-bottom:20px;
+}
+.tab-label {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem;
+  cursor: pointer;
+  /* Icon */
+}
+.tab-label:hover {
+  background: #1a252f;
+}
+.tab-label::after {
+  content: "❯";
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  transition: all 0.35s;
+}
+.tab-content {
+  max-height: 0;
+  padding: 0 1.5em;
+  color: #2c3e50;
+  background: white;
+  transition: all 0.35s;
+}
+.tab-close {
+    
+  display: flex;
+  justify-content: flex-end;
+  padding: 1em;
+  background: #2c3e50;
+  cursor: pointer;
+}
+.tab-close:hover {
+  background: #1a252f;
+}
+
+input:checked + .tab-label {
+  display: flex;
+  background: #1a252f;
+}
+input:checked + .tab-label::after {
+  transform: rotate(90deg);
+}
+input:checked ~ .tab-content {
+ /* max-height: 100vh;*/
+ 
+  padding: 1.5em 1.5em 3em 1.5em;
+}

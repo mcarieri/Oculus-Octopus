@@ -1,11 +1,28 @@
-# group-project-one
+# Oculus Octopus
 
-With this project, Irina, Naveed, and Matthew used the API's from RAWG, an online videogame database, and GiantBomb, a videogame news site, to pull information from particular games in tandem with GiantBomb's search results for said game. 
+A video game discovery servise using data from RAWG API, the largest video game database, and  Giant Bomb API
+## Technologies Used
 
-Q: What is the practical use for this program?
-A: This program sets the foundation for an expansive videogame database to be used in tandem with a particular site, offering extensive information on top of the search hits for a particular site. For fans of the GiantBomb site, for example, a search through the GiantBomb database will be supplemented with additional information regarding that particular game provided by RAWG, including reviews, developers, online content, and more. 
+* HTML
+* CSS (Tailwind)
+* JavaScript (jQuery)
 
-Q: Why were these particular APIs chosen?
-A: RAWG's API offers a wealth of information to utilize- extensive tags for each game, incorporated API's from websites such as Youtube and Twitch, and a clean UI that makes it easy to navigate. By implementing the API from GiantBomb, one of many similar videogame news and discussion sites, we demonstrated the capabilities of an API such as RAWG when used in tandem with a given website, offering users much more information through only a single search.
+## Description 
 
-Q: 
+Use this app to get information about a video game; more than 350,000 games are available. Search for a game and you will be presented with a set of game cards that matches your search input. Choose the card you like best and get info about that video game. Game info contains a game image, description, developers and genre, platforms, rating, and game website. Additionally to that, you may be presented with game characters, just click on "characters" button at the bottom of the game info section. Give the page time to load data and then the screen will be scrolled down to new info. 
+
+## Usage 
+​
+To search for a game, input a game name and click "Search". Then, click on a game card you like to see datailed informatoin. To see characters click "characters" button in the game info section. Use search history at the top left of the page to read about that game again.
+## Page View
+
+| ![alt text](assets/img/screenshot1.png)| ![alt text](assets/img/screenshot2.png)  |
+| :---:   | :-: | 
+| ![alt text](assets/img/screenshot3.png)| ![alt text](assets/img/screenshot4.png) | 
+## Link
+
+Link to deployed application https://mcarieri.github.io/group-project-one/
+
+---
+MIT License
+Copyright (c) [2021] [we]
