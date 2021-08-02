@@ -23,7 +23,7 @@
     visibility: visible;
   }
 
-  /*----------------- Accordion ------------------*/
+  /*----------------- FAQ ------------------*/
 
 .tab input {
     position: absolute;
@@ -68,6 +68,7 @@
     transition: all 0.35s;
   }
   .tab-close {
+      
     display: flex;
     justify-content: flex-end;
     padding: 1em;
@@ -79,6 +80,7 @@
   }
   
   input:checked + .tab-label {
+    display: flex;
     background: #1a252f;
   }
   input:checked + .tab-label::after {
@@ -86,5 +88,6 @@
   }
   input:checked ~ .tab-content {
    /* max-height: 100vh;*/
+   
     padding: 1.5em 1.5em 3em 1.5em;
   }
