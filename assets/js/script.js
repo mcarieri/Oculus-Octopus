@@ -98,10 +98,12 @@ let gameInfo = function (gameSlug) {
         .then(function (response) {
             response.json().then(function (data) {
                 console.log(data);
+                // game name, image, and description
                 game = data.name;
                 $('#game-name').text(data.name);
                 $('#game-img').attr("src", data.background_image);
                 $('#description').html(data.description);
+                // info cell
                 if (data.genres){
                     let p1 = $('<p>');
                     p1.text("Genres:  ");
@@ -120,6 +122,7 @@ let gameInfo = function (gameSlug) {
                     p1.text(p1.text().slice(0, -2));
                     $('#game-genre').append(p1);
                 }
+                //rating cell
                 if (data.ratings){
                     
                     for (i=0;i<data.ratings.length;i++){
@@ -128,6 +131,7 @@ let gameInfo = function (gameSlug) {
                         $('#game-rating').append(p1);
                     }   
                 }
+                //platforms cell
                 if (data.platforms){
                     let p1 = $('<p>');
                     for (i=0;i<data.platforms.length;i++){
@@ -136,12 +140,13 @@ let gameInfo = function (gameSlug) {
                     p1.text(p1.text().slice(0, -2));
                     $('#game-platform').append(p1);
                 }
+                // website cell
                 let site = $('<a>');
                 site.text(data.website);
                 site.attr("href", data.website); 
                 $("#game-website").append(site);
 
-
+                //scrol down
                 let scrollDiv = document.getElementById("one-game").offsetTop;
                 window.scrollTo({ top: scrollDiv, behavior: 'smooth' });
 
