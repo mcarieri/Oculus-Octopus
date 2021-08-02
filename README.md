@@ -1,6 +1,7 @@
 # Oculus Octopus
 
 A video game discovery servise using data from RAWG API, the largest video game database, and  Giant Bomb API
+
 ## Technologies Used
 
 * HTML
@@ -21,7 +22,7 @@ To search for a game, input a game name and click "Search". Then, click on a gam
 | ![alt text](assets/img/screenshot3.png)| ![alt text](assets/img/screenshot4.png) | 
 ## Link
 
-Link to deployed application https://mcarieri.github.io/group-project-one/
+Link to deployed application https://mcarieri.github.io/oculus-octopus/
 
 ---
 MIT License
