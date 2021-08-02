@@ -64,14 +64,11 @@ let displayGames = function (game) {
 
                         });
                         mainDiv.append(div);
-
                     }
-
                     $('#gameCards').append(mainDiv);
                     //scroll down
                     let scrollDiv = document.getElementById("gameCards").offsetTop;
                     window.scrollTo({ top: scrollDiv, behavior: 'smooth' });
-
                 });
             } else {
                 $('#gameCards').empty();
@@ -90,6 +87,10 @@ let displayGames = function (game) {
 let gameInfo = function (gameSlug) {
     console.log(game);
     $('#game-content').empty();
+    $('#game-genre').empty();
+    $('#game-rating').empty();
+    $("#game-platform").empty();
+    $("#game-website").empty();
     $('#one-game').show();
     // slug fetch
     apiURLlDetailed = `https://api.rawg.io/api/games/${gameSlug}?&key=${rawgKey}`;
@@ -101,7 +102,46 @@ let gameInfo = function (gameSlug) {
                 $('#game-name').text(data.name);
                 $('#game-img').attr("src", data.background_image);
                 $('#description').html(data.description);
-                $('one-game').show();
+                if (data.genres){
+                    let p1 = $('<p>');
+                    p1.text("Genres:  ");
+                    for (i=0;i<data.genres.length;i++){
+                        p1.text(p1.text()+data.genres[i].name+", ");
+                    }
+                    p1.text(p1.text().slice(0, -2));
+                    $('#game-genre').append(p1);
+                }
+                if (data.developers){
+                    let p1 = $('<p>');
+                    p1.text("Developers:  ");
+                    for (i=0;i<data.developers.length;i++){
+                        p1.text(p1.text()+data.developers[i].name+", ");
+                    }
+                    p1.text(p1.text().slice(0, -2));
+                    $('#game-genre').append(p1);
+                }
+                if (data.ratings){
+                    
+                    for (i=0;i<data.ratings.length;i++){
+                        let p1 = $('<p>');
+                        p1.text(data.ratings[i].title+", percent: "+ data.ratings[i].percent+ "%");
+                        $('#game-rating').append(p1);
+                    }   
+                }
+                if (data.platforms){
+                    let p1 = $('<p>');
+                    for (i=0;i<data.platforms.length;i++){
+                        p1.text(p1.text() + data.platforms[i].platform.name+", ");
+                    }
+                    p1.text(p1.text().slice(0, -2));
+                    $('#game-platform').append(p1);
+                }
+                let site = $('<a>');
+                site.text(data.website);
+                site.attr("href", data.website); 
+                $("#game-website").append(site);
+
+
                 let scrollDiv = document.getElementById("one-game").offsetTop;
                 window.scrollTo({ top: scrollDiv, behavior: 'smooth' });
 
@@ -110,11 +150,10 @@ let gameInfo = function (gameSlug) {
         .catch(function (error) {
              $('#game-name').text("Unable to connect to api.rawg.io");
         });
-
 }
-
 // get and show characters / giant bomb api
 function GBsearch() {
+    $('#game-content').empty();
     // search by game name
     GBUrl = `https://cors-anywhere.herokuapp.com/https://www.giantbomb.com/api/search/?api_key=${gbKey}&format=json&query="${game}"&resources=game&limit=1`;
     fetch(GBUrl)
@@ -131,7 +170,7 @@ function GBsearch() {
                             })
                             .then(function (data) {
                                 console.log(data);
-                                // if there is a list of characters ...
+                                // if the list of characters is not null...
                                 if (data.results.characters) {
                                     for (i = 0; i < data.results.characters.length; i++) {
                                         let characterId = data.results.characters[i].id;
@@ -168,7 +207,7 @@ function GBsearch() {
 
                                             });
                                     }
-                                     //scroll 
+                                     //scroll to characters
                                     let scrollDiv = document.getElementById("characters").offsetTop;
                                     window.scrollTo({ top: scrollDiv, behavior: 'smooth' });
                                 }
