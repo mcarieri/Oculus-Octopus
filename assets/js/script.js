@@ -244,7 +244,7 @@ function FillSearchHistory(){
     $("#history-selector").empty();
     $("#history-selector").addClass("absolute right-0 w-56 mt-4 origin-top-right  divide-y divide-gray-700 bg-red-600  text-white  shadow-lg outline-none");
     let hisoryList=JSON.parse(localStorage.getItem('history-list')) || [];
-    // in case it is empty
+    // in case  it is empty
     if (hisoryList.length===0){
         let divMain = $('<div>');
        divMain.addClass("py-1");

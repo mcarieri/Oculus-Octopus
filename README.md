@@ -9,7 +9,7 @@ A video game discovery servise using data from RAWG API, the largest video game 
 
 ## Description 
 
-Use this app to get information about a video game; more than 350,000 games are available. Search for a game and you will be presented with a set of game cards that matches your search input. Choose the card you like best and get info about that video game. Game info contains a game image, description, developers and genre, platforms, rating, and game website. Additionally to that, you may be presented with game characters, just click on "characters" button at the bottom of the game info section. Give the page time to load data and then the screen will be scrolled down to new info. 
+Use this app to get information about a video game; more than 350,000 games are available. Search for a game and you will be presented with a set of game cards that matches your search input. Choose the card you like best and get info about that video game. Game info contains a game image, description, developers and genre, platforms, rating, and game website. Additionally to that, you may be presented with game characters, just click on "characters" button at the bottom of the game info section. Give the page time to load data and then the screen will be scrolled down to new info.  
 
 ## Usage 
 ​
@@ -25,4 +25,4 @@ Link to deployed application https://mcarieri.github.io/group-project-one/
 
 ---
 MIT License
-Copyright (c) [2021] [we]
+Copyright (c) [2021] [our team]
